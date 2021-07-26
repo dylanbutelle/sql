@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 26 juil. 2021 à 12:52
+-- Généré le : lun. 26 juil. 2021 à 13:20
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.16
 
@@ -115,7 +115,8 @@ ALTER TABLE `actors`
 -- Index pour la table `linked`
 --
 ALTER TABLE `linked`
-  ADD KEY `FOREIGN` (`idMovies`,`idActor`);
+  ADD KEY `FOREIGN` (`idMovies`,`idActor`),
+  ADD KEY `linked_ibfk_2` (`idActor`);
 
 --
 -- Index pour la table `movies`
@@ -147,7 +148,8 @@ ALTER TABLE `movies`
 -- Contraintes pour la table `linked`
 --
 ALTER TABLE `linked`
-  ADD CONSTRAINT `linked_ibfk_1` FOREIGN KEY (`idMovies`) REFERENCES `movies` (`id`);
+  ADD CONSTRAINT `linked_ibfk_1` FOREIGN KEY (`idMovies`) REFERENCES `movies` (`id`),
+  ADD CONSTRAINT `linked_ibfk_2` FOREIGN KEY (`idActor`) REFERENCES `actors` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
