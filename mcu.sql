@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 26 juil. 2021 à 12:02
+-- Généré le : lun. 26 juil. 2021 à 12:52
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.16
 
@@ -50,33 +50,6 @@ INSERT INTO `actors` (`id`, `lastname`, `firstname`, `dateOfBirthday`, `creation
 -- --------------------------------------------------------
 
 --
--- Structure de la table `films`
---
-
-CREATE TABLE `films` (
-  `id` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `releaseDate` year(4) NOT NULL,
-  `duration` time NOT NULL,
-  `director` varchar(50) NOT NULL,
-  `creationDate` datetime NOT NULL,
-  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `films`
---
-
-INSERT INTO `films` (`id`, `title`, `releaseDate`, `duration`, `director`, `creationDate`, `updateDate`) VALUES
-(1, 'Avengers', 2012, '02:22:00', 'Joss Whedon', '2021-07-26 11:06:42', '2021-07-26 11:06:42'),
-(2, 'Iron Man', 2008, '02:10:00', 'Jon Favreau', '2021-07-26 11:03:15', '2021-07-26 11:03:15'),
-(3, 'Iron Man 2', 2010, '02:04:00', 'Jon Favreau', '2021-07-26 11:00:09', '2021-07-26 11:01:23'),
-(4, 'Iron Man 3', 2013, '02:10:00', 'Shane Black', '2021-07-26 11:07:28', '2021-07-26 11:07:28'),
-(5, 'Thor', 2011, '01:54:00', 'Kenneth Branagh', '2021-07-26 11:05:35', '2021-07-26 11:05:35');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `linked`
 --
 
@@ -97,9 +70,36 @@ INSERT INTO `linked` (`idMovies`, `idActor`) VALUES
 (1, 5),
 (2, 1),
 (3, 1),
+(3, 4),
 (4, 1),
-(5, 3),
-(3, 4);
+(5, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `movies`
+--
+
+CREATE TABLE `movies` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `releaseDate` year(4) NOT NULL,
+  `duration` time NOT NULL,
+  `director` varchar(50) NOT NULL,
+  `creationDate` datetime NOT NULL,
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `movies`
+--
+
+INSERT INTO `movies` (`id`, `title`, `releaseDate`, `duration`, `director`, `creationDate`, `updateDate`) VALUES
+(1, 'Avengers', 2012, '02:22:00', 'Joss Whedon', '2021-07-26 11:06:42', '2021-07-26 11:06:42'),
+(2, 'Iron Man', 2008, '02:10:00', 'Jon Favreau', '2021-07-26 11:03:15', '2021-07-26 11:03:15'),
+(3, 'Iron Man 2', 2010, '02:04:00', 'Jon Favreau', '2021-07-26 11:00:09', '2021-07-26 11:01:23'),
+(4, 'Iron Man 3', 2013, '02:10:00', 'Shane Black', '2021-07-26 11:07:28', '2021-07-26 11:07:28'),
+(5, 'Thor', 2011, '01:54:00', 'Kenneth Branagh', '2021-07-26 11:05:35', '2021-07-26 11:05:35');
 
 --
 -- Index pour les tables déchargées
@@ -109,13 +109,18 @@ INSERT INTO `linked` (`idMovies`, `idActor`) VALUES
 -- Index pour la table `actors`
 --
 ALTER TABLE `actors`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FOREIGN` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `films`
+-- Index pour la table `linked`
 --
-ALTER TABLE `films`
+ALTER TABLE `linked`
+  ADD KEY `FOREIGN` (`idMovies`,`idActor`);
+
+--
+-- Index pour la table `movies`
+--
+ALTER TABLE `movies`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -129,10 +134,20 @@ ALTER TABLE `actors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `films`
+-- AUTO_INCREMENT pour la table `movies`
 --
-ALTER TABLE `films`
+ALTER TABLE `movies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `linked`
+--
+ALTER TABLE `linked`
+  ADD CONSTRAINT `linked_ibfk_1` FOREIGN KEY (`idMovies`) REFERENCES `movies` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
