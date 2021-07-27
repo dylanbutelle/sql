@@ -7,7 +7,7 @@ SELECT title,releaseDate FROM movies ORDER BY releaseDate DESC
 
 ### Les noms, prénoms et ages des acteurs de plus de 30 ans dans l'ordre alphabétique.
 ```sql
-SELECT lastname,firstname,dateOfBirthday FROM actors WHERE YEAR(dateOfBirthday)<1991 ORDER BY lastname,firstname ASC
+SELECT lastname,firstname,(YEAR(NOW()) - YEAR(dateOfBirthday)) as age FROM actors WHERE YEAR(dateOfBirthday)<1991 ORDER BY lastname,firstname ASC
 ```
 
 ### La liste des acteurs pour un film donné.
