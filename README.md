@@ -32,7 +32,7 @@ INSERT INTO actors VALUES('0','Rudd','Paul','1969-4-6',NOW(),NOW())
 
 ### Requête pour modifier un film
 ```sql
-UPDATE movies SET duration = '01:58:10', updateDate=NOW() WHERE title = "Ant-Man"
+UPDATE movies SET duration = '01:58:10' WHERE title = "Ant-Man"
 ```
 
 ### Requête pour supprimer un acteur
