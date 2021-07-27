@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 26 juil. 2021 à 13:20
+-- Généré le : mar. 27 juil. 2021 à 12:56
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.16
 
@@ -32,8 +32,8 @@ CREATE TABLE `actors` (
   `lastname` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `dateOfBirthday` date NOT NULL,
-  `creationDate` timestamp NULL DEFAULT NULL,
-  `updateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -45,7 +45,7 @@ INSERT INTO `actors` (`id`, `lastname`, `firstname`, `dateOfBirthday`, `creation
 (2, 'Evans', 'Chris', '1981-06-13', '2021-07-26 09:20:16', '2021-07-26 09:20:16'),
 (3, 'Hemsworth', 'Chris', '1983-08-11', '2021-07-26 09:21:31', '2021-07-26 09:21:31'),
 (4, 'L. Jackson', 'Samuel', '1948-12-21', '2021-07-26 09:22:49', '2021-07-26 09:22:49'),
-(5, 'Ruffalo', 'Mark', '1967-11-22', '2021-07-26 09:24:22', '2021-07-26 09:24:22');
+(5, 'Ruffalo', 'Mark', '1967-11-22', '2021-07-26 09:24:22', '2021-07-27 12:55:05');
 
 -- --------------------------------------------------------
 
@@ -86,8 +86,8 @@ CREATE TABLE `movies` (
   `releaseDate` year(4) NOT NULL,
   `duration` time NOT NULL,
   `director` varchar(50) NOT NULL,
-  `creationDate` datetime NOT NULL,
-  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `creationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -95,11 +95,11 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `title`, `releaseDate`, `duration`, `director`, `creationDate`, `updateDate`) VALUES
-(1, 'Avengers', 2012, '02:22:00', 'Joss Whedon', '2021-07-26 11:06:42', '2021-07-26 11:06:42'),
-(2, 'Iron Man', 2008, '02:10:00', 'Jon Favreau', '2021-07-26 11:03:15', '2021-07-26 11:03:15'),
-(3, 'Iron Man 2', 2010, '02:04:00', 'Jon Favreau', '2021-07-26 11:00:09', '2021-07-26 11:01:23'),
-(4, 'Iron Man 3', 2013, '02:10:00', 'Shane Black', '2021-07-26 11:07:28', '2021-07-26 11:07:28'),
-(5, 'Thor', 2011, '01:54:00', 'Kenneth Branagh', '2021-07-26 11:05:35', '2021-07-26 11:05:35');
+(1, 'Avengers', 2012, '02:22:00', 'Joss Whedon', '2021-07-26 11:06:42', '2021-07-26 09:06:42'),
+(2, 'Iron Man', 2008, '02:10:00', 'Jon Favreau', '2021-07-26 11:03:15', '2021-07-26 09:03:15'),
+(3, 'Iron Man 2', 2010, '02:04:00', 'Jon Favreau', '2021-07-26 11:00:09', '2021-07-26 09:01:23'),
+(4, 'Iron Man 3', 2013, '02:10:00', 'Shane Black', '2021-07-26 11:07:28', '2021-07-26 09:07:28'),
+(5, 'Thor', 2011, '01:54:00', 'Kenneth Branagh', '2021-07-26 11:05:35', '2021-07-26 09:05:35');
 
 --
 -- Index pour les tables déchargées
@@ -132,13 +132,13 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT pour la table `actors`
 --
 ALTER TABLE `actors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Contraintes pour les tables déchargées
