@@ -19,3 +19,28 @@ SELECT movies.title,actors.firstname,actors.lastname FROM linked INNER JOIN movi
 ```sql
 SELECT movies.title,actors.firstname,actors.lastname FROM linked INNER JOIN movies ON linked.idMovies=movies.id INNER JOIN actors ON linked.idActor=actors.id WHERE actors.firstname="Robert" && actors.lastname="Downey Jr."
 ```
+
+### Requête pour ajouter un film.
+```sql
+
+```
+
+### Requête pour ajouter un acteur.
+```sql
+
+```
+
+### Requête pour modifier un film
+```sql
+
+```
+
+### Requête pour supprimer un acteur
+```sql
+
+```
+
+### Afficher les 3 derniers acteurs ajoutés.
+```sql
+
+```
