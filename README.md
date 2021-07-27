@@ -12,7 +12,7 @@ SELECT lastname,firstname,dateOfBirthday FROM actors WHERE YEAR(dateOfBirthday)<
 
 ### La liste des acteurs pour un film donné.
 ```sql
-SELECT movies.title,movies.firstname,actors.lastname FROM linked INNER JOIN movies ON linked.idMovies=movies.id INNER JOIN actors ON linked.idActor=actors.id WHERE movies.title="Avengers"
+SELECT movies.title,actors.firstname,actors.lastname FROM linked INNER JOIN movies ON linked.idMovies=movies.id INNER JOIN actors ON linked.idActor=actors.id WHERE movies.title="Avengers"
 ```
 
 ### La liste des films pour un acteur donné.
